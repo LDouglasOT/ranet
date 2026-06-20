@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   HIGH-QUALITY ACADEMIC PRINT MEDIA QUERY STYLESHEET
+   Strips navigation, sidebars, consoles, and optimizes high-contrast grids/reports
+   ========================================================================== */
+@media print {
+  /* 1. Global Reset & Body Contrast Optimizations */
+  html, body {
+    background: #ffffff !important;
+    background-image: none !important;
+    color: #111111 !important;
+    font-size: 11pt !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Remove scrollbars and default margins */
+  body {
+    overflow: visible !important;
+    height: auto !important;
+  }
+
+  /* 2. Strip Unneeded UI elements (Navigation, Sidebars, Debug Consoles) */
+  #academic-main-navbar,
+  footer,
+  aside,
+  #htmx-network-console,
+  #recharts-visual-dashboard,
+  #urgent-broadcast-ribbon,
+  .print\:hidden,
+  .no-print,
+  button,
+  .btn,
+  .alert,
+  nav,
+  input[type="button"],
+  input[type="submit"] {
+    display: none !important;
+  }
+
+  /* 3. Deep Optimization of Page Containers */
+  main,
+  #teacher-portal,
+  #admin-portal-main,
+  #parent-portal-host {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    overflow: visible !important;
+  }
+
+  /* Avoid cutting inside containers */
+  tr, td, th {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* 4. Formatting of Admin Portal Booklet and Modals */
+  /* Remove overlay styling to bring the modal content to the primary page */
+  .fixed.inset-0.bg-slate-900\/65 {
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    z-index: auto !important;
+  }
+
+  /* Transform the container modal to be full size */
+  .fixed.inset-0.bg-slate-900\/65 > div {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: #ffffff !important;
+    overflow: visible !important;
+    max-height: none !important;
+    position: static !important;
+  }
+
+  /* Make target student list scroll-box expand completely layout-wise */
+  .space-y-12.max-h-\[60vh\].overflow-y-auto {
+    max-height: none !important;
+    overflow: visible !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* 5. Mark / Gradebook Grid Style Reset (Teacher Portal) */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  table, th, td {
+    border: 1px solid #111111 !important; /* crisp borders for printing */
+  }
+
+  th {
+    background-color: #f1f5f9 !important;
+    color: #000000 !important;
+    font-weight: 800 !important;
+    font-size: 11px !important;
+    padding: 8px !important;
+    text-align: center !important;
+  }
+
+  td {
+    color: #111111 !important;
+    padding: 8px !important;
+    font-size: 11px !important;
+    background: transparent !important;
+  }
+
+  /* Inputs for score entry optimized for print output (appears as plain clean text) */
+  input[type="text"] {
+    border: none !important;
+    background: transparent !important;
+    text-align: center !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    font-weight: bold !important;
+    color: #000000 !important;
+    width: auto !important;
+  }
+
+  /* Expand any single-child input wrapper */
+  input[type="text"]::placeholder {
+    color: transparent !important;
+  }
+
+  /* Keep the generated text inside the comments but hide the Praise/Steady Progress/Warning buttons */
+  .flex.flex-wrap.gap-1 {
+    display: none !important;
+  }
+
+  /* 6. Admin Report Card Individual sheets breaks */
+  .print\:break-before-page {
+    page-break-before: always !important;
+    break-before: page !important;
+    margin-top: 2rem !important;
+    border: 2px solid #000000 !important; /* Bold solid borders */
+    padding: 2.5rem !important;
+    border-radius: 0 !important; /* standard sharp corners on printing */
+  }
+
+  /* Prevent overlapping labels */
+  .grid-cols-2, .grid-cols-4 {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 1.5rem !important;
+  }
+  .grid-cols-2 > p, .grid-cols-4 > p {
+    flex: 1 1 40% !important;
+    margin: 0 !important;
+    font-size: 12px !important;
+  }
+
+  /* Custom badges forced backgrounds on physical copies */
+  .bg-slate-950 {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+  }
+}

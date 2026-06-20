@@ -1,0 +1,6 @@
+{
+  "name": "Academic Management System",
+  "description": "A high-fidelity Primary School Academic Management System featuring Teacher portals with Excel-like mark grids, responsive Parent dashboards, and Admin assignment controls with simulated SSR and HTMX logger.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
